@@ -7,7 +7,7 @@ namespace bank_managment_csharp
 {
     public class Bank
     {
-        private List<Customer> customers = new List<Customer>();
+        private readonly List<Customer> customers = new List<Customer>();
 
         public Customer CreateCustomer(string name)
         {

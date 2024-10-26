@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Bank bank = new Bank();
+            Bank bank = new();
 
             // Create customer 1 and account
             Customer customer1 = bank.CreateCustomer("Chanaka HA");
