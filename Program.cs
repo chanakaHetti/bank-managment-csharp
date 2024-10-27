@@ -1,29 +1,35 @@
-﻿namespace bank_managment_csharp
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace bank_managment_csharp
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Bank bank = new();
 
-            // Create customer 1 and account
-            Customer customer1 = bank.CreateCustomer("Chanaka HA");
+            // Create first customer and accounts
+            Customer customer1 = bank.CreateCustomer("Chanaka");
             BankAccount account1 = bank.CreateAccount(customer1);
 
-            // Create customer 2 and account
-            Customer customer2 = bank.CreateCustomer("Amila Jay");
+            // Create second customer and accounts
+            Customer customer2 = bank.CreateCustomer("Amila");
             BankAccount account2 = bank.CreateAccount(customer2);
 
             // Perform transactions
-            account1.Deposit(1200);
-            account1.Withdraw(100);
+            account1.Deposit(50000);
+            account1.Withdraw(8565);
 
-            account2.Deposit(8000);
-            account2.Withdraw(2100);
-            account2.Withdraw(8000);
+            account2.Deposit(1000);
+            account2.Withdraw(1200);
+            account2.Withdraw(20);
 
-            // Display all customers
+            // Display all customers and accounts
             bank.DisplayAllCustomers();
+            bank.DisplayAllAccounts();
         }
     }
 }

@@ -7,12 +7,13 @@ namespace bank_managment_csharp
 {
     public class Bank
     {
-        private readonly List<Customer> customers = new List<Customer>();
+        private List<Customer> customers = new List<Customer>();
+        private List<BankAccount> accounts = new List<BankAccount>();
 
         public Customer CreateCustomer(string name)
         {
             int customerId = customers.Count + 1;
-            Customer newCustomer = new(name, customerId);
+            Customer newCustomer = new(customerId, name);
             customers.Add(newCustomer);
             Console.WriteLine($"Created Customer: {name} with Customer ID: {customerId}\n");
             return newCustomer;
@@ -20,25 +21,28 @@ namespace bank_managment_csharp
 
         public BankAccount CreateAccount(Customer customer)
         {
-            int accountNumber = (customers.Count * 100) + customer.Accounts.Count + 1;
-            BankAccount newAccount = new(accountNumber, customer);
-            customer.AddAccount(newAccount);
+            int accountNumber = (customers.Count * 100) + accounts.Count + 1;
+            BankAccount newAccount = new(accountNumber);
+            accounts.Add(newAccount);
+            Console.WriteLine($"Created Account number: {accountNumber} for Customer ID: {customer.CustomerId}\n");
             return newAccount;
         }
 
         public void DisplayAllCustomers()
         {
             Console.WriteLine("Bank Customers:");
-
             foreach (var customer in customers)
             {
-                Console.WriteLine($"Customer ID: {customer.CustomerId}, Name: {customer.CustomerName}");
-                Console.WriteLine("Accounts:");
+                customer.DisplayCustomerInfo();
+            }
+        }
 
-                foreach (var account in customer.Accounts)
-                {
-                    account.DisplayAccountInfo();
-                }
+        public void DisplayAllAccounts()
+        {
+            Console.WriteLine("Bank Accounts:");
+            foreach (var account in accounts)
+            {
+                account.DisplayAcocuntInfo();
             }
         }
     }

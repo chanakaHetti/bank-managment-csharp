@@ -5,22 +5,21 @@ using System.Threading.Tasks;
 
 namespace bank_managment_csharp
 {
-    public class BankAccount(int accountNumber, Customer accountHolder)
+    public class BankAccount(int accountNumber)
     {
         public int AccountNumber { get; private set; } = accountNumber;
-        public decimal Balance { get; private set; } = 0m;
-        public Customer AccountHolder { get; private set; } = accountHolder;
+        public decimal Balance = 0m;
 
         public void Deposit(decimal amount)
         {
             if (amount > 0)
             {
                 Balance += amount;
-                Console.WriteLine($"Deposited {amount:C} to Account Number {AccountNumber}. New Balance: {Balance:C}\n");
+                Console.WriteLine($"Deposited: {amount:C} to Account Number {AccountNumber}. New balance: {Balance:C}\n");
             }
             else
             {
-                Console.WriteLine("Deposit amount must be positive");
+                Console.WriteLine("Deposit amount must be positive. \n");
             }
         }
 
@@ -29,7 +28,7 @@ namespace bank_managment_csharp
             if (amount > 0 && amount <= Balance)
             {
                 Balance -= amount;
-                Console.WriteLine($"Withdrew {amount:C} from Account Number {AccountNumber}. New Balance: {Balance:C}\n");
+                Console.WriteLine($"Withdraw {amount:C} from Account Number {AccountNumber}. New balance: {Balance:C}\n");
             }
             else if (amount > Balance)
             {
@@ -37,15 +36,14 @@ namespace bank_managment_csharp
             }
             else
             {
-                Console.WriteLine("Withdrawal amount must be positive");
+                Console.WriteLine("Withdrawal amount must be positive.\n");
             }
         }
 
-        public void DisplayAccountInfo()
+        public void DisplayAcocuntInfo()
         {
             Console.WriteLine($"Account Number: {AccountNumber}");
-            Console.WriteLine($"Account Holder: {AccountHolder.CustomerName}");
-            Console.WriteLine($"Balance: {Balance:C}\n");
+            Console.WriteLine($"Balance: {Balance:C}");
         }
     }
 }

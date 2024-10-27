@@ -5,16 +5,14 @@ using System.Threading.Tasks;
 
 namespace bank_managment_csharp
 {
-    public class Customer(string customerName, int customerId)
+    public class Customer(int customerId, string customerName)
     {
-        public string CustomerName { get; private set; } = customerName;
         public int CustomerId { get; private set; } = customerId;
-        public List<BankAccount> Accounts { get; private set; } = new List<BankAccount>();
+        public string CustomerName { get; private set; } = customerName;
 
-        public void AddAccount(BankAccount account)
+        public void DisplayCustomerInfo()
         {
-            Accounts.Add(account);
-            Console.WriteLine($"Account added for {CustomerName} with Account Number: {account.AccountNumber}\n");
+            Console.WriteLine($"Customer ID: {CustomerId}, Name: {CustomerName}");
         }
     }
 }
